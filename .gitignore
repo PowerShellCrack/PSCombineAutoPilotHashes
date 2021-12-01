@@ -3,4 +3,4 @@
 !/Files/
 /Files/*
 *.csv
-*.v2.ps1
+*v.ps1

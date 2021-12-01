@@ -18,3 +18,4 @@ This is a simple script that will Combine multiple Autopilot Exported csv files 
 - Group tag support. If the first CSV does not have a group tag, then all are ignored
 - Intune (MS graph) support; auto imports devices automatically
 - UI; launch UI to browse for path
+- Progress bar for status
