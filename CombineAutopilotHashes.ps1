@@ -4,7 +4,10 @@
         Searches folder for hardware hashes in csv files and
         combines them to a compatible list for Autopilot import
     .LINK
-        
+
+    .NOTES
+    Author: Dick Tracy II
+    Version: 1.0.1
 #>
 
 ##*=============================================
