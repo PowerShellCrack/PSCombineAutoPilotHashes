@@ -122,8 +122,8 @@ If(Test-Path $CSVFilesPath)
         Out-File "$scriptRoot\CombinedHashes.csv" -Force -Encoding ascii
         #Export-Csv "$scriptRoot\CombinedList.csv" -NoTypeInformation -Force -Append
 
-    Write-Host ("Combine File is located here: {0}" -f "$scriptRoot\CombinedHashes.csv") -ForegroundColor Green
+    Write-Host ("Combined hashes is located in the file: {0}" -f "$scriptRoot\CombinedHashes.csv") -ForegroundColor Green
 }
 Else{
-    Write-Host ("Create a [Files] folder and copy all Autopilot csv's") -ForegroundColor Red
+    Write-Host ("Create a [Files] folder and copy all Autopilot csv's to it") -ForegroundColor Red
 }
