@@ -97,25 +97,33 @@ Function Get-ScriptPath {
 [string]$scriptRoot = Split-Path -Path $scriptPath -Parent
 [string]$CSVFilesPath = Join-Path -Path $scriptRoot -ChildPath 'Files'
 
+
+
 #remove list file if found
 If(Test-Path "$scriptRoot\CombinedHashes.csv" -ErrorAction SilentlyContinue){
     Remove-item "$scriptRoot\CombinedHashes.csv" -Force | Out-Null
 }
 
-#Get all csv files, import them
-Get-ChildItem -Path $CSVFilesPath -Filter *.csv |
-    #Grab the full path
-    Select-Object -ExpandProperty FullName |
-    #import all CSV files as an object
-    Import-Csv |
-    #Force all columns (even if Group tag does not exist in some csv)
-    Select-Object 'Device Serial Number','Windows Product ID','Hardware Hash','Group Tag' |
-    #by forcing headers, powershell quotes all values
-    #convert object list to CSV; then remove the quotes
-    ConvertTo-CSV -NoTypeInformation | ForEach-Object {$_ -Replace '"', ""; Write-host ("{0}" -f $_.split(',')[0])} |
-    #Export the CSV content using normal output
-    # Using Export-CSV will cause output to be calculated as length and not a list
-    Out-File "$scriptRoot\CombinedHashes.csv" -Force -Encoding ascii
-    #Export-Csv "$scriptRoot\CombinedList.csv" -NoTypeInformation -Force -Append
+If(Test-Path $CSVFilesPath)
+{
+    #Get all csv files, import them
+    Get-ChildItem -Path $CSVFilesPath -Filter *.csv |
+        #Grab the full path
+        Select-Object -ExpandProperty FullName |
+        #import all CSV files as an object
+        Import-Csv |
+        #Force all columns (even if Group tag does not exist in some csv)
+        Select-Object 'Device Serial Number','Windows Product ID','Hardware Hash','Group Tag' |
+        #by forcing headers, powershell quotes all values
+        #convert object list to CSV; then remove the quotes
+        ConvertTo-CSV -NoTypeInformation | ForEach-Object {$_ -Replace '"', ""; Write-host ("{0}" -f $_.split(',')[0])} |
+        #Export the CSV content using normal output
+        # Using Export-CSV will cause output to be calculated as length and not a list
+        Out-File "$scriptRoot\CombinedHashes.csv" -Force -Encoding ascii
+        #Export-Csv "$scriptRoot\CombinedList.csv" -NoTypeInformation -Force -Append
 
-Write-Host ("Combine File is located here: {0}" -f "$scriptRoot\CombinedHashes.csv") -ForegroundColor Green
+    Write-Host ("Combine File is located here: {0}" -f "$scriptRoot\CombinedHashes.csv") -ForegroundColor Green
+}
+Else{
+    Write-Host ("Create a [Files] folder and copy all Autopilot csv's") -ForegroundColor Red
+}
