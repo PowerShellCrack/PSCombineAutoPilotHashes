@@ -13,7 +13,7 @@
         Adds to an existing file. WARNING: could have duplicates if same csv exist
 
     .PARAMETER Online
-        Add computers to Windows Autopilot via the Intune Graph API
+        Add hashes to Windows Autopilot via the Intune Graph API
 
     .EXAMPLE
         .\CombineAutopilotHashes.ps1
