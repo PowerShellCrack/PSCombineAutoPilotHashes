@@ -1,4 +1,4 @@
-# Change log for CombineAutopilotHashes
+# Change log for PSCombineAutopilotHashes.ps1
 
 
 
@@ -10,6 +10,7 @@
 - Added _Online_ parameter; code taken from Get-WindowsAutopilotInfo.ps1 with modifications
 - Added _Assigned User_ column to headers; can be added when running _Get-WindowsAutopilotInfo.ps1 -AssignedUser user@domain_
 - Added LICENSE to git repo
+- renamed to PSCombineAutopilotHashes.ps1
 
 ## 1.0.1 -December 1, 2021
 

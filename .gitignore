@@ -4,3 +4,4 @@
 /Files/*
 *.csv
 *v.ps1
+*.workspace
