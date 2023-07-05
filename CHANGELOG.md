@@ -1,6 +1,6 @@
 # Change log for PSCombineAutopilotHashes.ps1
 
-## 2.0.0 -July 5, 2023
+## 2.0.1 -July 5, 2023
 
 - Updated script root check; Updated output if errors
 - Removed Online Function; use **Import-AutopilotCSV** from _WidowsAutopilotIntune_ module instead

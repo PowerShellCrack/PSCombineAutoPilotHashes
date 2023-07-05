@@ -12,8 +12,9 @@ This is a simple script that will Combine multiple Autopilot Exported csv files 
 ## How to use
 
 1. Download Repo
-2. Copy all csv files to __Files__ folder
-2. run _CombineAutopilotHashes.ps1_ using  PowerShell
+2. Create a _Files_ Folder
+3. Copy all exported hardware hash csv files to _Files_ folder
+4. run _CombineAutopilotHashes.ps1_ using PowerShell
 
 ```powershell
     PS> .\CombineAutopilotHashes.ps1
@@ -29,14 +30,13 @@ This is a simple script that will Combine multiple Autopilot Exported csv files 
     PS> .\CombineAutopilotHashes.ps1 -HashFilesPath C:\AutopilotExports -Append
  ```
 > RESULT: Searches in C:\AutopilotExports for csv files, and imports existing combined list and adds more entries
-> WARNING: This could have duplicates if same csv exist (don't use -Append if that is the case)
+> WARNING: This could have duplicates if same csv exist (don't use _-Append_ if that is the case)
 
-3. Import _CombinedHashes.csv_ to Autopilot devices (if _Online_ parameter is not used)
-
+5. Import _CombinedHashes.csv_ to Autopilot devices (see _Output_ section)
 
 ## Output
 
-Script will output a _CombinedHashes.csv_ file in root. Use this to import device intune using the WindowsAutopilotIntune module
+Script will output a file named _CombinedHashes.csv_ the root directory. Use this to import the list into Intune using the _WindowsAutopilotIntune_ module
 
  ```powershell
 Install-Module  WindowsAutopilotIntune -MinimumVersion 5.3 -Scope AllUsers
@@ -46,7 +46,7 @@ Import-AutopilotCSV -csvFile .\CombinedHashes.csv
 
 ## TODO
 
-- check what is already imported and only import new
+- checks what is already imported and only imports new serials
 - A UI that will show all imports
 
 # DISCLAIMER
