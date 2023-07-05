@@ -2,8 +2,6 @@
 /.vscode/*
 !/Files/
 /Files/*
-!/Resources/
-/Resources/*
 *.csv
 *v.ps1
-*.code-workspace
+*.Tests.ps1
